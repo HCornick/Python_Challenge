@@ -1,18 +1,11 @@
 #Python script to analyze financial records of a company
-
 import os
 import csv
 
+#Store the path of the desired file
 budget_path = os.path.join('.','Resources', 'budget_data.csv')
 
-#test = os.path.isfile('/budget_data.csv')
-#test2 = os.path.isfile(csvpath)
-#print(csvpath)
-#print(test2)
-
-#budget_path = os.path.join('/', 'budget_data.csv')
-
-#Lists to store data
+#Lists to store data from file
 months = []
 profit = []
 
@@ -55,10 +48,15 @@ Total_change = 0
 for number in Change:
     Total_change = float(Total_change) + float(number)
 
+#Calculate average for the list of changes, and store it
 Average_change = round(Total_change / len(Change),2)
 
+#Set the greatest increase and greatest decrease values to zero
 Greatest_increase = 0
 Greatest_decrease = 0
+
+#Loop through data to find greatest increase and greatest decrease values, and set the
+#index number in the change list equal to the index of the months list + 1
 for i,x in enumerate(Change):
     if x > Greatest_increase:
         Greatest_increase = x
@@ -69,6 +67,7 @@ for i,x in enumerate(Change):
         index = i
         Decrease_month = months[i+1]
 
+#Print all Financial Analysis information in terminal
 print("Financial Analysis")
 print("-------------------------------")      
 print("Total months: " +str(Total_months))
@@ -76,3 +75,13 @@ print("Total : $" + str(Total_profit))
 print("Average Change: $" + str(Average_change))
 print("Greatest Increase in Profits: " + str(Increase_month) +" ($" + str(Greatest_increase) +")")
 print("Greatest Decrease in Profits: " + str(Decrease_month) +" ($" + str(Greatest_decrease) +")")
+
+#Print all Financial Analysis information in a text file
+f = open("Financial_Analysis.txt", 'w')
+f.write("Financial Analysis\n")
+f.write("-------------------------------\n")      
+f.write("Total months: " +str(Total_months) + "\n")
+f.write("Total : $" + str(Total_profit) +"\n")
+f.write("Average Change: $" + str(Average_change) + "\n")
+f.write("Greatest Increase in Profits: " + str(Increase_month) +" ($" + str(Greatest_increase) +")\n")
+f.write("Greatest Decrease in Profits: " + str(Decrease_month) +" ($" + str(Greatest_decrease) +")\n")
