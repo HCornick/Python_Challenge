@@ -49,21 +49,28 @@ for x in Candidate:
 
 print(Unique_candidate)
 
-Total_votes = []
+Cand_votes = []
 for x in Unique_candidate:
-    Total_votes.append(0)
+    Cand_votes.append(0)
 
 for index,each in enumerate(Unique_candidate):
     for x in Candidate:
         if x == each:
-            Total_votes[index] += 1
+            Cand_votes[index] += 1
 
-print(Total_votes)
-
-
-
-
+print(Cand_votes)
 
 print("Election Results")
 print("---------------------------")
 print("Total Votes: " + str(Total_votes))
+print("---------------------------")
+for index,x in enumerate(Cand_votes):
+    Vote_percent = round((100.000*x)/Total_votes, 3)
+    print(str(Unique_candidate[index]) + ": " + str(Vote_percent) + "% (" + str(x) + ")")
+print("---------------------------")
+Winner = max(Cand_votes)
+for index,x in enumerate(Cand_votes):
+    if x == Winner:
+        print("Winner: " + str(Unique_candidate[index]))
+    break
+print("---------------------------")
