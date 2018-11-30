@@ -47,8 +47,6 @@ for x in Candidate:
     else:
         Unique_candidate.append(x)
 
-print(Unique_candidate)
-
 Cand_votes = []
 for x in Unique_candidate:
     Cand_votes.append(0)
@@ -58,15 +56,13 @@ for index,each in enumerate(Unique_candidate):
         if x == each:
             Cand_votes[index] += 1
 
-print(Cand_votes)
-
 print("Election Results")
 print("---------------------------")
 print("Total Votes: " + str(Total_votes))
 print("---------------------------")
 for index,x in enumerate(Cand_votes):
-    Vote_percent = round((100.000*x)/Total_votes, 3)
-    print(str(Unique_candidate[index]) + ": " + str(Vote_percent) + "% (" + str(x) + ")")
+    Vote_percent = (100.0*x)/Total_votes
+    print(str(Unique_candidate[index]) + ": " + str("%.3f" % Vote_percent) + "% (" + str(x) + ")")
 print("---------------------------")
 Winner = max(Cand_votes)
 for index,x in enumerate(Cand_votes):
@@ -74,3 +70,19 @@ for index,x in enumerate(Cand_votes):
         print("Winner: " + str(Unique_candidate[index]))
     break
 print("---------------------------")
+
+#Print all Election Results information in a text file
+e = open("Election_Results.txt", 'w')
+e.write("Election Results\n")
+e.write("---------------------------\n")
+e.write("Total Votes: " + str(Total_votes) + "\n")
+e.write("---------------------------\n")
+for index,x in enumerate(Cand_votes):
+    Vote_percent = (100.0*x)/Total_votes
+    e.write(str(Unique_candidate[index]) + ": " + str("%.3f" % Vote_percent) + "% (" + str(x) + ")\n")
+e.write("---------------------------\n")
+for index,x in enumerate(Cand_votes):
+    if x == Winner:
+        e.write("Winner: " + str(Unique_candidate[index]) + "\n")
+    break
+e.write("---------------------------\n")
