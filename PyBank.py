@@ -70,7 +70,7 @@ for i,x in enumerate(Change):
 #Print all Financial Analysis information in terminal
 print("Financial Analysis")
 print("-------------------------------")      
-print("Total months: " +str(Total_months))
+print("Total Months: " +str(Total_months))
 print("Total : $" + str(Total_profit))
 print("Average Change: $" + str(Average_change))
 print("Greatest Increase in Profits: " + str(Increase_month) +" ($" + str(Greatest_increase) +")")
@@ -80,7 +80,7 @@ print("Greatest Decrease in Profits: " + str(Decrease_month) +" ($" + str(Greate
 f = open("Financial_Analysis.txt", 'w')
 f.write("Financial Analysis\n")
 f.write("-------------------------------\n")      
-f.write("Total months: " +str(Total_months) + "\n")
+f.write("Total Months: " +str(Total_months) + "\n")
 f.write("Total : $" + str(Total_profit) +"\n")
 f.write("Average Change: $" + str(Average_change) + "\n")
 f.write("Greatest Increase in Profits: " + str(Increase_month) +" ($" + str(Greatest_increase) +")\n")
