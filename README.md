@@ -1,4 +1,4 @@
-# python-challenge
+# Python_Challenge
 
 'PyBank' is a Python script that analyzes the financial records of a company.
 
